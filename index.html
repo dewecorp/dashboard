@@ -6,213 +6,8 @@
     <title>Dashboard Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        }
-        .scroll-thin::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
-        }
-        .scroll-thin::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        .scroll-thin::-webkit-scrollbar-thumb {
-            background: rgba(148, 163, 184, 0.7);
-            border-radius: 999px;
-        }
-        body.light {
-            background-color: #f9fafb;
-            color: #0f172a;
-        }
-        body.light header {
-            background-color: #ffffff;
-        }
-        body.light main {
-            background-color: #f9fafb;
-        }
-        body.light footer {
-            background-color: #ffffff;
-        }
-        body.light [class*="bg-slate-950"],
-        body.light [class*="bg-slate-900"],
-        body.light [class*="bg-slate-900/"],
-        body.light [class*="bg-slate-800"] {
-            background-color: #ffffff !important;
-        }
-        body.light .bg-gradient-to-br,
-        body.light .bg-gradient-to-b {
-            background-image: none !important;
-            background-color: #ffffff !important;
-        }
-        body.light [class*="bg-[radial-gradient"] {
-            background-image: none !important;
-        }
-        body.light [class*="border-slate-800"],
-        body.light [class*="ring-slate-700"],
-        body.light [class*="ring-slate-800"],
-        body.light [class*="divide-slate-800"] {
-            border-color: #e5e7eb !important;
-        }
-        body.light [class*="text-slate-50"],
-        body.light [class*="text-slate-100"],
-        body.light [class*="text-slate-200"] {
-            color: #0f172a !important;
-        }
-        body.light [class*="text-slate-300"],
-        body.light [class*="text-slate-400"],
-        body.light [class*="text-slate-500"] {
-            color: #4b5563 !important;
-        }
-        body.light .summary-card-primary .text-white,
-        body.light .summary-card-secondary .text-white,
-        body.light .summary-card-info .text-white,
-        body.light .summary-card-warning .text-white,
-        body.light .summary-card-danger .text-white {
-            color: #0f172a !important;
-        }
-        body.light .shadow-slate-950\/40,
-        body.light .shadow-slate-950\/60 {
-            box-shadow: 0 18px 45px rgba(34, 197, 94, 0.25);
-        }
-        .btn-dashboard-primary {
-            border-radius: 9999px;
-            padding-inline: 1.25rem;
-            padding-block: 0.45rem;
-            font-size: 0.78rem;
-            font-weight: 600;
-            letter-spacing: 0.03em;
-            text-transform: uppercase;
-            background-image: linear-gradient(to right, #4f46e5, #22c55e);
-            border: none;
-            box-shadow: 0 12px 30px rgba(34, 197, 94, 0.55);
-        }
-        .btn-dashboard-primary:hover {
-            filter: brightness(1.05);
-        }
-        .btn-dashboard-soft {
-            border-radius: 9999px;
-            padding-inline: 1rem;
-            padding-block: 0.4rem;
-            font-size: 0.78rem;
-            font-weight: 500;
-            border-width: 1px;
-            border-style: solid;
-            border-color: rgba(148, 163, 184, 0.6);
-            background-color: rgba(15, 23, 42, 0.8);
-            color: #e5e7eb;
-        }
-        body.light .btn-dashboard-soft {
-            background-color: #f9fafb;
-            color: #374151;
-        }
-        .card-dashboard {
-            border-radius: 1rem;
-            border-width: 1px;
-            border-style: solid;
-            border-color: rgba(15, 23, 42, 0.6);
-            background-color: rgba(15, 23, 42, 0.96);
-            box-shadow: 0 18px 45px rgba(34, 197, 94, 0.45);
-        }
-        body.light .card-dashboard {
-            background-color: #ffffff;
-            border-color: #e5e7eb;
-            box-shadow: 0 18px 40px rgba(34, 197, 94, 0.28);
-        }
-        .modal-dashboard .modal-content {
-            border-radius: 1.25rem;
-            border: 1px solid rgba(148, 163, 184, 0.45);
-            background-color: #020617;
-            color: #e5e7eb;
-        }
-        body.light .modal-dashboard .modal-content {
-            background-color: #ffffff;
-            color: #0f172a;
-        }
-        .table-dashboard thead {
-            background-color: rgba(15, 23, 42, 0.98);
-            color: #e5e7eb;
-        }
-        .table-dashboard tbody tr:nth-child(even) {
-            background-color: rgba(15, 23, 42, 0.85);
-        }
-        body.light .table-dashboard thead {
-            background-color: #f3f4f6;
-            color: #111827;
-        }
-        body.light .table-dashboard tbody tr:nth-child(even) {
-            background-color: #f9fafb;
-        }
-        .btn-dash-primary,
-        .btn-dash-info,
-        .btn-dash-warning,
-        .btn-dash-danger {
-            border-radius: 9999px;
-            padding-inline: 1rem;
-            padding-block: 0.4rem;
-            font-size: 0.8rem;
-            font-weight: 600;
-            border: none;
-            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.35);
-        }
-        .btn-dash-primary {
-            background-image: linear-gradient(to right, #4f46e5, #6366f1);
-            color: #e5e7eb;
-        }
-        .btn-dash-info {
-            background-image: linear-gradient(to right, #0ea5e9, #22d3ee);
-            color: #ecfeff;
-        }
-        .btn-dash-warning {
-            background-image: linear-gradient(to right, #f97316, #facc15);
-            color: #431407;
-        }
-        .btn-dash-danger {
-            background-image: linear-gradient(to right, #f97373, #fb7185);
-            color: #fee2e2;
-        }
-        .summary-card-primary {
-            background: linear-gradient(to bottom right, rgba(59, 130, 246, 0.08), rgba(34, 197, 94, 0.16));
-        }
-        body.light .summary-card-primary {
-            background: #ecfdf5;
-            border-color: rgba(34, 197, 94, 0.35) !important;
-        }
-        .summary-card-secondary {
-            background: linear-gradient(to bottom right, rgba(148, 163, 184, 0.18), rgba(226, 232, 240, 0.08));
-        }
-        body.light .summary-card-secondary {
-            background: #f9fafb;
-            border-color: #e5e7eb !important;
-        }
-        .summary-card-info {
-            background: linear-gradient(to bottom right, rgba(56, 189, 248, 0.18), rgba(59, 130, 246, 0.08));
-        }
-        body.light .summary-card-info {
-            background: #eff6ff;
-            border-color: rgba(59, 130, 246, 0.35) !important;
-        }
-        .summary-card-warning {
-            background: linear-gradient(to bottom right, rgba(251, 191, 36, 0.15), rgba(248, 250, 252, 0.02));
-        }
-        body.light .summary-card-warning {
-            background: #fffbeb;
-            border-color: rgba(245, 158, 11, 0.5) !important;
-        }
-        .summary-card-danger {
-            background: linear-gradient(to bottom right, rgba(248, 113, 113, 0.16), rgba(248, 250, 252, 0.02));
-        }
-        body.light .summary-card-danger {
-            background: #fef2f2;
-            border-color: rgba(248, 113, 113, 0.5) !important;
-        }
-        .nav-link-active {
-            border-left: 2px solid rgba(129, 140, 248, 0.85);
-        }
-        body.light .nav-link-active {
-            border-left-color: #4f46e5;
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.css">
 </head>
 <body class="min-h-screen bg-slate-950 text-slate-50 flex flex-col">
     <!-- Navbar sticky -->
@@ -246,6 +41,14 @@
                     AR
                     <span class="absolute -right-0.5 -top-0.5 h-2 w-2 rounded-full bg-emerald-400 ring-2 ring-slate-950"></span>
                 </button>
+                <a href="components-auth.html" class="inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900 px-3 py-1.5 text-[11px] font-medium text-slate-200 shadow-sm hover:border-rose-500 hover:text-rose-300">
+                    <span class="inline-flex h-4 w-4 items-center justify-center rounded-full bg-slate-800 text-rose-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16 7l-4-4m0 0L8 7m4-4v12m5 4H7a2 2 0 01-2-2v-3" />
+                        </svg>
+                    </span>
+                    Logout
+                </a>
             </div>
 
             <button class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-800 bg-slate-900 text-slate-200 hover:border-slate-700 hover:bg-slate-800 md:hidden" id="menuToggle">
@@ -271,7 +74,7 @@
     <!-- Konten utama -->
     <main class="flex w-full flex-1 flex-col gap-6 px-4 pb-10 pt-5 sm:px-6 lg:px-8 lg:flex-row lg:items-start">
         <!-- Sidebar -->
-        <aside class="order-1 w-full space-y-4 lg:w-64 lg:sticky lg:top-24">
+        <aside id="sidebar" class="order-1 w-full space-y-4 hidden md:block lg:w-64 lg:sticky lg:top-24">
             <!-- Profil & status -->
             <section class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4 shadow-lg shadow-slate-950/40">
                 <div class="flex items-center gap-3">
@@ -389,50 +192,22 @@
                             Lihat semua menu
                         </a>
                     </li>
+                    <li>
+                        <a href="components-auth.html" class="flex items-center gap-2 rounded-xl px-3 py-2 text-xs text-rose-300 hover:bg-slate-900 hover:text-rose-200">
+                            <span class="inline-flex h-6 w-6 items-center justify-center rounded-lg bg-slate-900 text-rose-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M16 7l-4-4m0 0L8 7m4-4v12m5 4H7a2 2 0 01-2-2v-3"/>
+                                </svg>
+                            </span>
+                            Logout
+                        </a>
+                    </li>
                 </ul>
             </nav>
-
-            <!-- Aktivitas terbaru -->
-            <section class="rounded-2xl border border-slate-800 bg-slate-900/60 p-3 shadow-lg shadow-slate-950/40">
-                <div class="mb-2 flex items-center justify-between">
-                    <p class="text-[11px] font-semibold uppercase tracking-wide text-slate-500">Aktivitas terbaru</p>
-                    <button class="text-[10px] font-medium text-slate-400 hover:text-indigo-300">Lihat semua</button>
-                </div>
-                <div class="scroll-thin max-h-48 space-y-2 overflow-y-auto text-xs">
-                    <div class="flex items-start gap-2 rounded-xl bg-slate-950/40 px-3 py-2">
-                        <span class="mt-0.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
-                        <div>
-                            <p class="text-slate-200">User baru <span class="font-semibold">andika</span> berhasil terdaftar.</p>
-                            <p class="text-[10px] text-slate-500">2 menit yang lalu</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-2 rounded-xl px-3 py-2">
-                        <span class="mt-0.5 h-1.5 w-1.5 rounded-full bg-sky-400"></span>
-                        <div>
-                            <p class="text-slate-200">5 transaksi menunggu verifikasi.</p>
-                            <p class="text-[10px] text-slate-500">10 menit yang lalu</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-2 rounded-xl px-3 py-2">
-                        <span class="mt-0.5 h-1.5 w-1.5 rounded-full bg-amber-400"></span>
-                        <div>
-                            <p class="text-slate-200">Penggunaan storage mencapai 80%.</p>
-                            <p class="text-[10px] text-slate-500">30 menit yang lalu</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-2 rounded-xl px-3 py-2">
-                        <span class="mt-0.5 h-1.5 w-1.5 rounded-full bg-rose-400"></span>
-                        <div>
-                            <p class="text-slate-200">Percobaan login gagal dari IP baru.</p>
-                            <p class="text-[10px] text-slate-500">1 jam yang lalu</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
         </aside>
 
         <!-- Area konten -->
-        <section class="order-2 flex-1 space-y-5">
+        <section id="mainContent" class="order-2 flex-1 space-y-5">
             <nav class="text-[11px] text-slate-400" aria-label="Breadcrumb">
                 <span class="text-slate-400">Dashboard</span>
                 <span class="mx-1 text-slate-500">/</span>
@@ -454,7 +229,7 @@
                 </div>
             </div>
 
-            <!-- Kartu metrik -->
+                <!-- Kartu metrik -->
             <div class="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
                 <!-- Card 1 -->
                 <article class="group relative overflow-hidden rounded-2xl border border-slate-800 p-4 shadow-xl shadow-slate-950/60 summary-card-primary">
@@ -542,6 +317,100 @@
                         <span class="text-slate-400">0 insiden kritis</span>
                     </div>
                 </article>
+            </div>
+
+            <!-- Widget tambahan -->
+            <div class="mt-4 grid gap-3 lg:grid-cols-3">
+                <section class="relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60 p-4 text-xs text-slate-200 shadow-xl shadow-slate-950/60">
+                    <div class="flex items-center justify-between gap-3">
+                        <div>
+                            <p class="text-[11px] font-medium uppercase tracking-wide text-slate-400">Progress onboarding</p>
+                            <p class="text-sm font-semibold text-slate-100">Tim berhasil menyelesaikan 72% task</p>
+                        </div>
+                        <span class="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2.5 py-1 text-[10px] font-semibold text-emerald-400 ring-1 ring-emerald-500/30">
+                            <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+                            On track
+                        </span>
+                    </div>
+                    <div class="mt-3">
+                        <div class="mb-1 flex items-center justify-between text-[11px] text-slate-400">
+                            <span>Progress keseluruhan</span>
+                            <span class="font-semibold text-emerald-400">72%</span>
+                        </div>
+                        <div class="h-2.5 w-full overflow-hidden rounded-full bg-slate-900">
+                            <div class="h-full w-[72%] rounded-full bg-gradient-to-r from-indigo-500 via-sky-400 to-emerald-400"></div>
+                        </div>
+                        <p class="mt-2 text-[11px] text-slate-500">18 dari 25 task sudah selesai.</p>
+                    </div>
+                </section>
+
+                <section class="relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60 p-4 text-xs text-slate-200 shadow-xl shadow-slate-950/60">
+                    <div class="mb-3 flex items-center justify-between">
+                        <div>
+                            <p class="text-[11px] font-medium uppercase tracking-wide text-slate-400">Aktivitas terbaru</p>
+                            <p class="text-sm font-semibold text-slate-100">Log singkat aktivitas penting</p>
+                        </div>
+                        <span class="rounded-full bg-slate-800/80 px-2.5 py-1 text-[10px] font-semibold text-slate-300">
+                            5 update
+                        </span>
+                    </div>
+                    <ol class="space-y-2">
+                        <li class="flex items-start gap-2">
+                            <span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+                            <div>
+                                <p class="text-[11px] text-slate-100">User <span class="font-semibold">andi@company.com</span> berhasil login.</p>
+                                <p class="text-[10px] text-slate-500">2 menit lalu</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="mt-1 h-1.5 w-1.5 rounded-full bg-sky-400"></span>
+                            <div>
+                                <p class="text-[11px] text-slate-100">Laporan penjualan harian di-export ke Excel.</p>
+                                <p class="text-[10px] text-slate-500">15 menit lalu</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="mt-1 h-1.5 w-1.5 rounded-full bg-amber-400"></span>
+                            <div>
+                                <p class="text-[11px] text-slate-100">Ada 3 tiket support baru yang masuk.</p>
+                                <p class="text-[10px] text-slate-500">30 menit lalu</p>
+                            </div>
+                        </li>
+                    </ol>
+                </section>
+
+                <section class="relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60 p-4 text-xs text-slate-200 shadow-xl shadow-slate-950/60">
+                    <div class="mb-3 flex items-center justify-between">
+                        <div>
+                            <p class="text-[11px] font-medium uppercase tracking-wide text-slate-400">Ringkasan sistem</p>
+                            <p class="text-sm font-semibold text-slate-100">Status singkat resource dan error</p>
+                        </div>
+                        <span class="inline-flex items-center gap-1 rounded-full bg-slate-950 px-2.5 py-1 text-[10px] font-semibold text-slate-300 ring-1 ring-slate-700">
+                            <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+                            Normal
+                        </span>
+                    </div>
+                    <div class="space-y-2 text-[11px]">
+                        <div class="flex items-center justify-between">
+                            <span class="text-slate-400">CPU usage</span>
+                            <span class="font-semibold text-slate-100">38%</span>
+                        </div>
+                        <div class="h-1.5 w-full overflow-hidden rounded-full bg-slate-900">
+                            <div class="h-full w-[38%] rounded-full bg-indigo-500"></div>
+                        </div>
+                        <div class="mt-2 flex items-center justify-between">
+                            <span class="text-slate-400">Memory usage</span>
+                            <span class="font-semibold text-slate-100">62%</span>
+                        </div>
+                        <div class="h-1.5 w-full overflow-hidden rounded-full bg-slate-900">
+                            <div class="h-full w-[62%] rounded-full bg-sky-400"></div>
+                        </div>
+                        <div class="mt-2 flex items-center justify-between">
+                            <span class="text-slate-400">Error 24 jam terakhir</span>
+                            <span class="font-semibold text-emerald-400">0 critical • 4 minor</span>
+                        </div>
+                    </div>
+                </section>
             </div>
 
             <!-- Area grafik & tabel -->
@@ -866,69 +735,9 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
-    <script>
-        const menuToggle = document.getElementById("menuToggle");
-        const mobileMenu = document.getElementById("mobileMenu");
-
-        if (menuToggle && mobileMenu) {
-            menuToggle.addEventListener("click", () => {
-                const isHidden = mobileMenu.style.display === "none" || mobileMenu.style.display === "";
-                mobileMenu.style.display = isHidden ? "block" : "none";
-            });
-        }
-
-        const menuDropdownToggle = document.getElementById("menuDropdownToggle");
-        const menuDropdownSub = document.getElementById("menuDropdownSub");
-        const menuDropdownChevron = document.getElementById("menuDropdownChevron");
-
-        if (menuDropdownToggle && menuDropdownSub) {
-            menuDropdownToggle.addEventListener("click", () => {
-                menuDropdownSub.classList.toggle("hidden");
-                if (menuDropdownChevron) {
-                    menuDropdownChevron.classList.toggle("rotate-180");
-                }
-            });
-        }
-
-        const themeToggle = document.getElementById("themeToggle");
-        const themeToggleLabel = document.getElementById("themeToggleLabel");
-        const themeToggleThumb = document.getElementById("themeToggleThumb");
-
-        function applyTheme(mode) {
-            const isLight = mode === "light";
-            if (isLight) {
-                document.body.classList.add("light");
-                if (themeToggleLabel) {
-                    themeToggleLabel.textContent = "Mode terang";
-                }
-                if (themeToggleThumb) {
-                    themeToggleThumb.classList.remove("translate-x-1");
-                    themeToggleThumb.classList.add("translate-x-4");
-                }
-            } else {
-                document.body.classList.remove("light");
-                if (themeToggleLabel) {
-                    themeToggleLabel.textContent = "Mode gelap";
-                }
-                if (themeToggleThumb) {
-                    themeToggleThumb.classList.remove("translate-x-4");
-                    themeToggleThumb.classList.add("translate-x-1");
-                }
-            }
-        }
-
-        const savedTheme = localStorage.getItem("dashboard-theme") || "dark";
-        applyTheme(savedTheme);
-
-        if (themeToggle) {
-            themeToggle.addEventListener("click", () => {
-                const isLight = document.body.classList.contains("light");
-                const nextTheme = isLight ? "dark" : "light";
-                applyTheme(nextTheme);
-                localStorage.setItem("dashboard-theme", nextTheme);
-            });
-        }
-    </script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.js"></script>
+    <script src="assets/js/dashboard.js"></script>
 </body>
 </html>

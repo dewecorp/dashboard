@@ -6,205 +6,8 @@
     <title>Komponen UI • Dashboard Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        }
-        .scroll-thin::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
-        }
-        .scroll-thin::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        .scroll-thin::-webkit-scrollbar-thumb {
-            background: rgba(148, 163, 184, 0.7);
-            border-radius: 999px;
-        }
-        body.light {
-            background-color: #f9fafb;
-            color: #0f172a;
-        }
-        body.light header {
-            background-color: #ffffff;
-        }
-        body.light main {
-            background-color: #f9fafb;
-        }
-        body.light footer {
-            background-color: #ffffff;
-        }
-        body.light [class*="bg-slate-950"],
-        body.light [class*="bg-slate-900"],
-        body.light [class*="bg-slate-900/"],
-        body.light [class*="bg-slate-800"] {
-            background-color: #ffffff !important;
-        }
-        body.light .bg-gradient-to-br,
-        body.light .bg-gradient-to-b {
-            background-image: none !important;
-            background-color: #ffffff !important;
-        }
-        body.light [class*="bg-[radial-gradient"] {
-            background-image: none !important;
-        }
-        body.light [class*="border-slate-800"],
-        body.light [class*="ring-slate-700"],
-        body.light [class*="ring-slate-800"],
-        body.light [class*="divide-slate-800"] {
-            border-color: #e5e7eb !important;
-        }
-        body.light [class*="text-slate-50"],
-        body.light [class*="text-slate-100"],
-        body.light [class*="text-slate-200"] {
-            color: #0f172a !important;
-        }
-        body.light [class*="text-slate-300"],
-        body.light [class*="text-slate-400"],
-        body.light [class*="text-slate-500"] {
-            color: #4b5563 !important;
-        }
-        body.light .shadow-slate-950\/40,
-        body.light .shadow-slate-950\/60 {
-            box-shadow: 0 18px 45px rgba(34, 197, 94, 0.25);
-        }
-        .btn-dashboard-primary {
-            border-radius: 9999px;
-            padding-inline: 1.25rem;
-            padding-block: 0.45rem;
-            font-size: 0.78rem;
-            font-weight: 600;
-            letter-spacing: 0.03em;
-            text-transform: uppercase;
-            background-image: linear-gradient(to right, #4f46e5, #22c55e);
-            border: none;
-            box-shadow: 0 12px 30px rgba(34, 197, 94, 0.55);
-        }
-        .btn-dashboard-primary:hover {
-            filter: brightness(1.05);
-        }
-        .btn-dashboard-soft {
-            border-radius: 9999px;
-            padding-inline: 1rem;
-            padding-block: 0.4rem;
-            font-size: 0.78rem;
-            font-weight: 500;
-            border-width: 1px;
-            border-style: solid;
-            border-color: rgba(148, 163, 184, 0.6);
-            background-color: rgba(15, 23, 42, 0.8);
-            color: #e5e7eb;
-        }
-        body.light .btn-dashboard-soft {
-            background-color: #f9fafb;
-            color: #374151;
-        }
-        .card-dashboard {
-            border-radius: 1rem;
-            border-width: 1px;
-            border-style: solid;
-            border-color: rgba(15, 23, 42, 0.6);
-            background-color: rgba(15, 23, 42, 0.96);
-            box-shadow: 0 18px 45px rgba(34, 197, 94, 0.45);
-        }
-        body.light .card-dashboard {
-            background-color: #ffffff;
-            border-color: #e5e7eb;
-            box-shadow: 0 18px 40px rgba(34, 197, 94, 0.28);
-        }
-        .nav-link-active {
-            border-left: 2px solid rgba(129, 140, 248, 0.85);
-        }
-        body.light .nav-link-active {
-            border-left-color: #4f46e5;
-        }
-        .modal-dashboard .modal-content {
-            border-radius: 1.25rem;
-            border: 1px solid rgba(148, 163, 184, 0.45);
-            background-color: #020617;
-            color: #e5e7eb;
-        }
-        body.light .modal-dashboard .modal-content {
-            background-color: #ffffff;
-            color: #0f172a;
-        }
-        .table-dashboard thead {
-            background-color: rgba(15, 23, 42, 0.98);
-            color: #e5e7eb;
-        }
-        .table-dashboard tbody tr:nth-child(even) {
-            background-color: rgba(15, 23, 42, 0.85);
-        }
-        body.light .table-dashboard thead {
-            background-color: #f3f4f6;
-            color: #111827;
-        }
-        body.light .table-dashboard tbody tr:nth-child(even) {
-            background-color: #f9fafb;
-        }
-        .btn-dash-primary,
-        .btn-dash-info,
-        .btn-dash-warning,
-        .btn-dash-danger {
-            border-radius: 9999px;
-            padding-inline: 1rem;
-            padding-block: 0.4rem;
-            font-size: 0.8rem;
-            font-weight: 600;
-            border: none;
-            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.35);
-        }
-        .btn-dash-primary {
-            background-image: linear-gradient(to right, #4f46e5, #6366f1);
-            color: #e5e7eb;
-        }
-        .btn-dash-info {
-            background-image: linear-gradient(to right, #0ea5e9, #22d3ee);
-            color: #ecfeff;
-        }
-        .btn-dash-warning {
-            background-image: linear-gradient(to right, #f97316, #facc15);
-            color: #431407;
-        }
-        .btn-dash-danger {
-            background-image: linear-gradient(to right, #f97373, #fb7185);
-            color: #fee2e2;
-        }
-        .auth-card {
-            border-radius: 1.25rem;
-            border-width: 1px;
-            border-style: solid;
-            border-color: rgba(15, 23, 42, 0.7);
-            background-color: rgba(15, 23, 42, 0.98);
-            box-shadow: 0 16px 40px rgba(15, 23, 42, 0.85);
-        }
-        body.light .auth-card {
-            background-color: #ffffff;
-            border-color: #e5e7eb;
-            box-shadow: 0 16px 34px rgba(15, 23, 42, 0.08);
-        }
-        .auth-input {
-            border-radius: 9999px;
-            border-width: 1px;
-            border-style: solid;
-            border-color: rgba(148, 163, 184, 0.7);
-            padding-inline: 1rem;
-            padding-block: 0.45rem;
-            font-size: 0.8rem;
-            background-color: rgba(15, 23, 42, 0.9);
-            color: #e5e7eb;
-        }
-        body.light .auth-input {
-            background-color: #f9fafb;
-            color: #111827;
-            border-color: #d1d5db;
-        }
-        .auth-input:focus {
-            outline: none;
-            border-color: #6366f1;
-            box-shadow: 0 0 0 1px rgba(129, 140, 248, 0.6);
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.css">
 </head>
 <body class="min-h-screen bg-slate-950 text-slate-50 flex flex-col">
     <header class="sticky top-0 z-50 border-b border-slate-800 bg-slate-950/80 backdrop-blur-xl">
@@ -241,7 +44,7 @@
 
     <main class="flex w-full flex-1 flex-col gap-6 px-4 pb-10 pt-5 sm:px-6 lg:px-8 lg:flex-row lg:items-start">
         <!-- Sidebar komponen -->
-        <aside class="order-1 w-full space-y-4 lg:w-64 lg:sticky lg:top-24">
+        <aside id="sidebar" class="order-1 w-full space-y-4 hidden md:block lg:w-64 lg:sticky lg:top-24">
             <section class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4 shadow-lg shadow-slate-950/40">
                 <div class="flex items-center gap-3">
                     <div class="relative h-11 w-11 overflow-hidden rounded-2xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500">
@@ -350,12 +153,22 @@
                             Ikon
                         </a>
                     </li>
+                    <li>
+                        <a href="components-auth.html" class="flex items-center gap-2 rounded-xl px-3 py-2 text-xs text-rose-300 hover:bg-slate-900 hover:text-rose-200">
+                            <span class="inline-flex h-6 w-6 items-center justify-center rounded-lg bg-slate-900 text-rose-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M16 7l-4-4m0 0L8 7m4-4v12m5 4H7a2 2 0 01-2-2v-3"/>
+                                </svg>
+                            </span>
+                            Logout
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </aside>
 
         <!-- Konten utama komponen -->
-        <section class="order-2 flex-1 space-y-4">
+        <section id="mainContent" class="order-2 flex-1 space-y-4">
             <nav class="text-[11px] text-slate-400" aria-label="Breadcrumb">
                 <a href="index.html" class="text-slate-400 hover:text-indigo-400">Dashboard</a>
                 <span class="mx-1 text-slate-500">/</span>
@@ -448,58 +261,9 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
-    <script>
-        const menuToggle = document.getElementById("menuToggle");
-        const mobileMenu = document.getElementById("mobileMenu");
-
-        if (menuToggle && mobileMenu) {
-            menuToggle.addEventListener("click", () => {
-                const isHidden = mobileMenu && (mobileMenu.style.display === "none" || mobileMenu.style.display === "");
-                if (mobileMenu) {
-                    mobileMenu.style.display = isHidden ? "block" : "none";
-                }
-            });
-        }
-
-        const themeToggle = document.getElementById("themeToggle");
-        const themeToggleLabel = document.getElementById("themeToggleLabel");
-        const themeToggleThumb = document.getElementById("themeToggleThumb");
-
-        function applyTheme(mode) {
-            const isLight = mode === "light";
-            if (isLight) {
-                document.body.classList.add("light");
-                if (themeToggleLabel) {
-                    themeToggleLabel.textContent = "Mode terang";
-                }
-                if (themeToggleThumb) {
-                    themeToggleThumb.classList.remove("translate-x-1");
-                    themeToggleThumb.classList.add("translate-x-4");
-                }
-            } else {
-                document.body.classList.remove("light");
-                if (themeToggleLabel) {
-                    themeToggleLabel.textContent = "Mode gelap";
-                }
-                if (themeToggleThumb) {
-                    themeToggleThumb.classList.remove("translate-x-4");
-                    themeToggleThumb.classList.add("translate-x-1");
-                }
-            }
-        }
-
-        const savedTheme = localStorage.getItem("dashboard-theme") || "dark";
-        applyTheme(savedTheme);
-
-        if (themeToggle) {
-            themeToggle.addEventListener("click", () => {
-                const isLight = document.body.classList.contains("light");
-                const nextTheme = isLight ? "dark" : "light";
-                applyTheme(nextTheme);
-                localStorage.setItem("dashboard-theme", nextTheme);
-            });
-        }
-    </script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.js"></script>
+    <script src="assets/js/dashboard.js"></script>
 </body>
 </html>
