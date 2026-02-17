@@ -111,8 +111,8 @@ rem ============================================
 rem  git push
 rem ============================================
 echo.
-echo === Menjalankan git push ke remote tracking default ===
-git push
+echo === Menjalankan git push ke origin/main ===
+git push -u origin main
 if errorlevel 1 (
     echo.
     echo Peringatan: git push gagal. Periksa konfigurasi remote atau koneksi internet.
