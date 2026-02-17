@@ -95,7 +95,7 @@ echo === Menjalankan git commit ===
 git commit -m "%COMMIT_MSG%"
 if errorlevel 1 (
     echo.
-    echo Commit gagal (mungkin tidak ada perubahan baru).
+    echo Commit gagal, mungkin tidak ada perubahan baru.
     set "CONFIRM_NO_COMMIT="
     set /p CONFIRM_NO_COMMIT="Lanjutkan git push dan backup ZIP tanpa commit baru? (Y/N): "
     if /I not "%CONFIRM_NO_COMMIT%"=="Y" (
@@ -119,10 +119,10 @@ if errorlevel 1 (
 )
 
 rem ============================================
-rem  ZIP backup (overwrite)
+rem  ZIP backup overwrite
 rem ============================================
 echo.
-echo === Membuat ZIP backup (menimpa jika sudah ada) ===
+echo === Membuat ZIP backup - menimpa jika sudah ada ===
 echo File: dashboard-backup.zip
 
 powershell -NoLogo -NonInteractive -Command "Get-ChildItem -Path . -Recurse -File -Exclude 'dashboard-backup.zip','.gitignore','dashboard-backup.bat','git-commit-push-backup.bat' | Compress-Archive -DestinationPath 'dashboard-backup.zip' -Force" 2>nul
