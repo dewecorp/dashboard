@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabel & DataTable • Dashboard Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+        body.light {
+            background-color: #f9fafb;
+            color: #0f172a;
+        }
+        body.light header {
+            background-color: #ffffff;
+        }
+        body.light main {
+            background-color: #f9fafb;
+        }
+        body.light footer {
+            background-color: #ffffff;
+        }
+        body.light [class*="bg-slate-950"],
+        body.light [class*="bg-slate-900"],
+        body.light [class*="bg-slate-900/"],
+        body.light [class*="bg-slate-800"] {
+            background-color: #ffffff !important;
+        }
+        body.light [class*="border-slate-800"] {
+            border-color: #e5e7eb !important;
+        }
+        body.light [class*="text-slate-50"],
+        body.light [class*="text-slate-100"],
+        body.light [class*="text-slate-200"] {
+            color: #0f172a !important;
+        }
+        body.light [class*="text-slate-300"],
+        body.light [class*="text-slate-400"],
+        body.light [class*="text-slate-500"] {
+            color: #4b5563 !important;
+        }
+        .btn-dashboard-soft {
+            border-radius: 9999px;
+            padding-inline: 1rem;
+            padding-block: 0.4rem;
+            font-size: 0.78rem;
+            font-weight: 500;
+            border-width: 1px;
+            border-style: solid;
+            border-color: rgba(148, 163, 184, 0.6);
+            background-color: rgba(15, 23, 42, 0.8);
+            color: #e5e7eb;
+        }
+        body.light .btn-dashboard-soft {
+            background-color: #f9fafb;
+            color: #374151;
+        }
+        .table-dashboard thead {
+            background-color: rgba(15, 23, 42, 0.98);
+            color: #e5e7eb;
+        }
+        .table-dashboard tbody tr:nth-child(even) {
+            background-color: rgba(15, 23, 42, 0.85);
+        }
+        body.light .table-dashboard thead {
+            background-color: #f3f4f6;
+            color: #111827;
+        }
+        body.light .table-dashboard tbody tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+        .nav-link-active {
+            border-left: 2px solid rgba(129, 140, 248, 0.85);
+        }
+        body.light .nav-link-active {
+            border-left-color: #4f46e5;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-slate-950 text-slate-50 flex flex-col">
+    <header class="sticky top-0 z-50 border-b border-slate-800 bg-slate-950/80 backdrop-blur-xl">
+        <div class="flex w-full items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+            <div class="flex items-center gap-3">
+                <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 via-sky-500 to-emerald-400 shadow-lg shadow-indigo-500/40">
+                    <span class="text-lg font-semibold tracking-tight">DA</span>
+                </div>
+                <div>
+                    <h1 class="text-sm font-medium tracking-tight text-slate-200 sm:text-base">Dashboard Admin</h1>
+                    <p class="text-[11px] text-slate-400 sm:text-xs">Sample tabel & DataTable</p>
+                </div>
+            </div>
+
+            <div class="hidden items-center gap-3 md:flex">
+                <a href="components.html" class="inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900 px-3 py-1.5 text-xs font-medium text-slate-200 shadow-sm hover:border-slate-700 hover:bg-slate-800">
+                    Semua sample
+                </a>
+                <button id="themeToggle" class="inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900 px-3 py-1.5 text-[11px] font-medium text-slate-200 shadow-sm hover:border-slate-700 hover:bg-slate-800">
+                    <span class="flex h-4 w-8 items-center rounded-full bg-slate-800">
+                        <span id="themeToggleThumb" class="h-3 w-3 rounded-full bg-indigo-400 transition-transform duration-200 translate-x-1"></span>
+                    </span>
+                    <span id="themeToggleLabel">Mode gelap</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex w-full flex-1 flex-col gap-6 px-4 pb-10 pt-5 sm:px-6 lg:px-8 lg:flex-row lg:items-start">
+        <aside class="order-1 w-full space-y-4 lg:w-64 lg:sticky lg:top-24">
+            <section class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4 shadow-lg shadow-emerald-500/40">
+                <div class="flex items-center gap-3">
+                    <div class="relative h-11 w-11 overflow-hidden rounded-2xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500">
+                        <div class="absolute inset-0 bg-[radial-gradient(circle_at_10%_20%,rgba(255,255,255,0.35)_0,transparent_60%)]"></div>
+                        <span class="relative flex h-full w-full items-center justify-center text-sm font-semibold text-white">AD</span>
+                    </div>
+                    <div>
+                        <p class="text-xs font-medium text-slate-200">Selamat datang kembali,</p>
+                        <p class="text-sm font-semibold text-white">Admin</p>
+                    </div>
+                </div>
+                <div class="mt-3 flex items-center justify-between rounded-xl bg-slate-950/60 px-3 py-2">
+                    <div>
+                        <p class="text-[11px] uppercase tracking-wide text-slate-500">Halaman</p>
+                        <p class="text-xs font-semibold text-slate-100">Sample komponen UI</p>
+                    </div>
+                    <span class="inline-flex items-center rounded-full bg-emerald-500/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide text-emerald-400 ring-1 ring-emerald-500/30">
+                        Aktif
+                    </span>
+                </div>
+            </section>
+
+            <nav class="rounded-2xl border border-slate-800 bg-slate-900/60 p-3 text-xs text-slate-300 shadow-lg shadow-emerald-500/40">
+                <p class="mb-2 px-1 text-[11px] font-semibold uppercase tracking-wide text-slate-500">Navigasi</p>
+                <ul class="space-y-1.5">
+                    <li>
+                        <a href="index.html" class="flex items-center gap-2 rounded-xl px-3 py-2 text-xs text-slate-300 hover:bg-slate-800">
+                            <span class="inline-flex h-6 w-6 items-center justify-center rounded-lg bg-slate-800 text-slate-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0h6"/>
+                                </svg>
+                            </span>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="components.html" class="flex items-center gap-2 rounded-xl px-3 py-2 text-xs text-slate-300 hover:bg-slate-800">
+                            <span class="inline-flex h-6 w-6 items-center justify-center rounded-lg bg-slate-800 text-slate-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 4h16v4H4zM4 10h10v4H4zM4 16h7v4H4z"/>
+                                </svg>
+                            </span>
+                            Komponen UI
+                        </a>
+                    </li>
+                    <li>
+                        <a href="components-buttons.html" class="flex items-center gap-2 rounded-xl px-3 py-2 text-xs text-slate-300 hover:bg-slate-800">
+                            <span class="inline-flex h-6 w-6 items-center justify-center rounded-lg bg-slate-800 text-slate-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37L13 12m0 0l-2.59-2.37M13 12l-2.59 2.37M13 12l2.59-2.37M5 6h14"/>
+                                </svg>
+                            </span>
+                            Buttons & card
+                        </a>
+                    </li>
+                    <li>
+                        <a href="components-forms.html" class="flex items-center gap-2 rounded-xl px-3 py-2 text-xs text-slate-300 hover:bg-slate-800">
+                            <span class="inline-flex h-6 w-6 items-center justify-center rounded-lg bg-slate-800 text-slate-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h10M4 17h6"/>
+                                </svg>
+                            </span>
+                            Form & upload
+                        </a>
+                    </li>
+                    <li>
+                        <a href="components-tables.html" class="nav-link-active flex items-center justify-between rounded-xl bg-indigo-500 px-3 py-2 text-xs font-semibold text-indigo-50 shadow-sm shadow-indigo-500/40">
+                            <span class="flex items-center gap-2">
+                                <span class="inline-flex h-6 w-6 items-center justify-center rounded-lg bg-indigo-500/20 text-indigo-300">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 4h16v4H4zM4 10h16v10H4z"/>
+                                    </svg>
+                                </span>
+                                Tabel
+                            </span>
+                            <span class="rounded-full bg-indigo-500/20 px-2 py-0.5 text-[10px] font-semibold text-indigo-200">Now</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="components-auth.html" class="flex items-center gap-2 rounded-xl px-3 py-2 text-xs text-slate-300 hover:bg-slate-800">
+                            <span class="inline-flex h-6 w-6 items-center justify-center rounded-lg bg-slate-800 text-slate-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M16 21v-2a4 4 0 00-4-4H7a4 4 0 00-4 4v2m9-11a4 4 0 100-8 4 4 0 000 8z"/>
+                                </svg>
+                            </span>
+                            Login & Register
+                        </a>
+                    </li>
+                    <li>
+                        <a href="components-modal.html" class="flex items-center gap-2 rounded-xl px-3 py-2 text-xs text-slate-300 hover:bg-slate-800">
+                            <span class="inline-flex h-6 w-6 items-center justify-center rounded-lg bg-slate-800 text-slate-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16M8 8v12"/>
+                                </svg>
+                            </span>
+                            Modal
+                        </a>
+                    </li>
+                    <li>
+                        <a href="components-icons.html" class="flex items-center gap-2 rounded-xl px-3 py-2 text-xs text-slate-300 hover:bg-slate-800">
+                            <span class="inline-flex h-6 w-6 items-center justify-center rounded-lg bg-slate-800 text-slate-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                            </span>
+                            Ikon
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <section class="order-2 flex-1 space-y-4">
+            <nav class="mb-1 text-[11px] text-slate-400" aria-label="Breadcrumb">
+                <a href="index.html" class="text-slate-400 hover:text-indigo-400">Dashboard</a>
+                <span class="mx-1 text-slate-500">/</span>
+                <a href="components.html" class="text-slate-400 hover:text-indigo-400">Komponen UI</a>
+                <span class="mx-1 text-slate-500">/</span>
+                <span class="text-slate-200">Tabel</span>
+            </nav>
+            <section class="space-y-3 rounded-2xl border border-slate-800 bg-slate-900/60 p-4 text-xs text-slate-200 shadow-xl shadow-emerald-500/50">
+                <p class="text-[11px] font-medium uppercase tracking-[0.18em] text-sky-300">Tabel Bootstrap</p>
+                <h2 class="text-lg font-semibold tracking-tight text-slate-50">
+                    Contoh tabel data sederhana
+                </h2>
+
+                <div class="rounded-xl border border-slate-800 bg-slate-950/70 p-3">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <p class="mb-0 text-[11px] font-semibold uppercase tracking-wide text-slate-400">Tabel Bootstrap</p>
+                        <button type="button" class="btn btn-xs btn-dashboard-soft">
+                            Export
+                        </button>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-sm align-middle mb-0 text-[11px] text-slate-200 table-dashboard">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nama</th>
+                                    <th scope="col" class="text-end">Role</th>
+                                    <th scope="col" class="text-end">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Admin utama</td>
+                                    <td class="text-end">Super Admin</td>
+                                    <td class="text-end text-emerald-400">Aktif</td>
+                                </tr>
+                                <tr>
+                                    <td>Tim finance</td>
+                                    <td class="text-end">Keuangan</td>
+                                    <td class="text-end text-amber-300">Review</td>
+                                </tr>
+                                <tr>
+                                    <td>Tim support</td>
+                                    <td class="text-end">Support</td>
+                                    <td class="text-end text-slate-400">Idle</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section class="space-y-3 rounded-2xl border border-slate-800 bg-slate-900/60 p-4 text-xs text-slate-200 shadow-xl shadow-emerald-500/50">
+                <p class="text-[11px] font-medium uppercase tracking-[0.18em] text-sky-300">Contoh DataTable</p>
+                <h2 class="text-lg font-semibold tracking-tight text-slate-50">
+                    Tampilan mirip DataTable (tanpa plugin)
+                </h2>
+
+                <div class="rounded-xl border border-slate-800 bg-slate-950/70 p-3">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-2 gap-2">
+                        <p class="mb-0 text-[11px] font-semibold uppercase tracking-wide text-slate-400">User</p>
+                        <div class="d-flex gap-2 align-items-center">
+                            <select class="form-select form-select-sm text-[11px] bg-transparent text-slate-200 border-slate-700">
+                                <option>10</option>
+                                <option>25</option>
+                                <option>50</option>
+                            </select>
+                            <input type="search" class="form-control form-control-sm text-[11px] bg-transparent text-slate-200 border-slate-700" placeholder="Cari...">
+                        </div>
+                    </div>
+                    <div class="table-responsive mb-2">
+                        <table class="table table-sm align-middle mb-0 text-[11px] text-slate-200 table-dashboard">
+                            <thead>
+                                <tr>
+                                    <th scope="col">User</th>
+                                    <th scope="col" class="text-end">Email</th>
+                                    <th scope="col" class="text-end">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>andika</td>
+                                    <td class="text-end">andika@example.com</td>
+                                    <td class="text-end text-emerald-400">Aktif</td>
+                                </tr>
+                                <tr>
+                                    <td>sari</td>
+                                    <td class="text-end">sari@example.com</td>
+                                    <td class="text-end text-amber-300">Menunggu</td>
+                                </tr>
+                                <tr>
+                                    <td>agus</td>
+                                    <td class="text-end">agus@example.com</td>
+                                    <td class="text-end text-rose-400">Diblokir</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="d-flex flex-wrap justify-content-between align-items-center text-[11px] text-slate-400">
+                        <span>Menampilkan 1–3 dari 3 data</span>
+                        <nav>
+                            <ul class="pagination pagination-sm mb-0">
+                                <li class="page-item disabled"><span class="page-link bg-transparent border-slate-700 text-slate-500">Prev</span></li>
+                                <li class="page-item active"><span class="page-link border-slate-700 bg-indigo-500 text-white">1</span></li>
+                                <li class="page-item"><span class="page-link bg-transparent border-slate-700 text-slate-300">2</span></li>
+                                <li class="page-item"><span class="page-link bg-transparent border-slate-700 text-slate-300">Next</span></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <footer class="border-t border-slate-800 bg-slate-950/80 px-4 py-4 sm:px-6 lg:px-8">
+        <div class="mx-auto flex max-w-5xl flex-col items-center justify-between gap-2 text-[11px] text-slate-500 sm:flex-row">
+            <p class="text-center sm:text-left">
+                © 2026 Dashboard Admin. Sample tabel & DataTable.
+            </p>
+            <div class="flex flex-wrap items-center justify-center gap-3">
+                <a href="index.html" class="hover:text-indigo-400">Dashboard</a>
+                <a href="components.html" class="hover:text-indigo-400">Semua sample</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script>
+        const themeToggle = document.getElementById("themeToggle");
+        const themeToggleLabel = document.getElementById("themeToggleLabel");
+        const themeToggleThumb = document.getElementById("themeToggleThumb");
+
+        function applyTheme(mode) {
+            const isLight = mode === "light";
+            if (isLight) {
+                document.body.classList.add("light");
+                if (themeToggleLabel) {
+                    themeToggleLabel.textContent = "Mode terang";
+                }
+                if (themeToggleThumb) {
+                    themeToggleThumb.classList.remove("translate-x-1");
+                    themeToggleThumb.classList.add("translate-x-4");
+                }
+            } else {
+                document.body.classList.remove("light");
+                if (themeToggleLabel) {
+                    themeToggleLabel.textContent = "Mode gelap";
+                }
+                if (themeToggleThumb) {
+                    themeToggleThumb.classList.remove("translate-x-4");
+                    themeToggleThumb.classList.add("translate-x-1");
+                }
+            }
+        }
+
+        const savedTheme = localStorage.getItem("dashboard-theme") || "dark";
+        applyTheme(savedTheme);
+
+        if (themeToggle) {
+            themeToggle.addEventListener("click", () => {
+                const isLight = document.body.classList.contains("light");
+                const nextTheme = isLight ? "dark" : "light";
+                applyTheme(nextTheme);
+                localStorage.setItem("dashboard-theme", nextTheme);
+            });
+        }
+    </script>
+</body>
+</html>
