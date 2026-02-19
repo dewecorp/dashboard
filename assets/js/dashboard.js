@@ -347,10 +347,40 @@ document.addEventListener("DOMContentLoaded", function () {
                 const type = button.getAttribute("data-toastr-type") || "info";
                 const title = button.getAttribute("data-toastr-title") || "";
                 const message = button.getAttribute("data-toastr-message") || "";
+                const position = button.getAttribute("data-toastr-position");
+
+                const baseOptions = {
+                    progressBar: toastr.options.progressBar,
+                    closeButton: toastr.options.closeButton,
+                    timeOut: toastr.options.timeOut,
+                    positionClass: toastr.options.positionClass
+                };
+
+                if (position) {
+                    baseOptions.positionClass = position;
+                }
+
                 if (typeof toastr[type] === "function") {
-                    toastr[type](message, title);
+                    toastr[type](message, title, baseOptions);
                 } else {
-                    toastr.info(message, title);
+                    toastr.info(message, title, baseOptions);
+                }
+
+                if (position) {
+                    const container = document.getElementById("toast-container");
+                    if (container) {
+                        container.classList.remove(
+                            "toast-top-right",
+                            "toast-top-left",
+                            "toast-top-center",
+                            "toast-top-full-width",
+                            "toast-bottom-right",
+                            "toast-bottom-left",
+                            "toast-bottom-center",
+                            "toast-bottom-full-width"
+                        );
+                        container.classList.add(position);
+                    }
                 }
             });
         });
